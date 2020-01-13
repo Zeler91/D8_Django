@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Информация по категориям и приоритетам на {{today}}{% endblock %}
+
+{% block main_content %}
+  <h3>Категории и приоритеты на {{now}}</h3>
+  <ul>
+  {% for cat, count in counts.items %}
+    <li><span class="badge badge-info">{{ cat }}: {{ count }}</span></li>
+  {% empty %}
+    <li>Список задач по категориям пуст. Попробуйте добавить их из админки</li>
+  {% endfor %}
+  </ul>
+  <ul>
+  {% for p, count in priority_count.items %}
+    <li><span class="badge badge-warning">{{ p }}: {{ count }}</span></li>
+  {% empty %}
+    <li>Нет приоритетных задач</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
